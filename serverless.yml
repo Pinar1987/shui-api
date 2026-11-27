@@ -93,3 +93,17 @@ functions:
       - httpApi:
           path: /posts
           method: post
+
+  getPosts:
+    handler: src/handlers/posts/getPosts.handler
+    events:
+      - httpApi:
+          path: /posts
+          method: get
+
+  getPost:
+    handler: src/handlers/posts/getPost.handler
+    events:
+      - httpApi:
+          path: /posts/{postId}
+          method: get
