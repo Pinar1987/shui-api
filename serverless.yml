@@ -86,3 +86,10 @@ functions:
       - httpApi:
           path: /auth/login
           method: post
+
+  createPost:
+    handler: src/handlers/posts/createPost.handler
+    events:
+      - httpApi:
+          path: /posts
+          method: post
