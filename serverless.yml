@@ -1,0 +1,10 @@
+service: shui-api
+
+frameworkVersion: '4'
+
+provider:
+  name: aws
+  runtime: nodejs22.x
+  region: eu-north-1
+  stage: dev
+  profile: pinar
