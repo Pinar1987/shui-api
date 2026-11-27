@@ -1,4 +1,5 @@
-import { PutCommand, ScanCommand, GetCommand, DeleteCommand } from "@aws-sdk/lib-dynamodb";
+import { PutCommand, ScanCommand, GetCommand,   UpdateCommand,
+ DeleteCommand } from "@aws-sdk/lib-dynamodb";
 import { db } from "../utils/db.js";
 
 const TableName = process.env.POSTS_TABLE;
