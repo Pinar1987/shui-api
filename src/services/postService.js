@@ -1,5 +1,5 @@
 import { randomUUID } from "node:crypto";
-import { createPost } from "../repositories/postRepository.js";
+import { createPost, getAllPosts, getPostById } from "../repositories/postRepository.js";
 
 export const createNewPost = async ({ title, content }, user) => {
   const now = new Date().toISOString();
@@ -15,4 +15,20 @@ export const createNewPost = async ({ title, content }, user) => {
   };
 
   return createPost(post);
+};
+
+export const listPosts = async (username) => {
+  const posts = await getAllPosts();
+
+  const filtered = username
+    ? posts.filter((post) => post.username === username)
+    : posts;
+
+  return filtered.sort(
+    (a, b) => b.createdAt.localeCompare(a.createdAt)
+  );
+};
+
+export const findPost = async (id) => {
+  return getPostById(id);
 };
