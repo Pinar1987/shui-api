@@ -12,7 +12,8 @@ provider:
     USERS_TABLE: ${self:service}-${sls:stage}-users
     POSTS_TABLE: ${self:service}-${sls:stage}-posts
     COMMENTS_TABLE: ${self:service}-${sls:stage}-comments
-    iam:
+    
+  iam:
     role:
       statements:
         - Effect: Allow
