@@ -12,6 +12,21 @@ provider:
     USERS_TABLE: ${self:service}-${sls:stage}-users
     POSTS_TABLE: ${self:service}-${sls:stage}-posts
     COMMENTS_TABLE: ${self:service}-${sls:stage}-comments
+    iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - dynamodb:GetItem
+            - dynamodb:PutItem
+            - dynamodb:UpdateItem
+            - dynamodb:DeleteItem
+            - dynamodb:Scan
+            - dynamodb:Query
+          Resource:
+            - !GetAtt UsersTable.Arn
+            - !GetAtt PostsTable.Arn
+            - !GetAtt CommentsTable.Arn  
 
 resources:
   Resources:
