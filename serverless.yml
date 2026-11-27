@@ -107,3 +107,17 @@ functions:
       - httpApi:
           path: /posts/{postId}
           method: get
+
+  updatePost:
+    handler: src/handlers/posts/updatePost.handler
+    events:
+      - httpApi:
+          path: /posts/{postId}
+          method: put
+
+  deletePost:
+    handler: src/handlers/posts/deletePost.handler
+    events:
+      - httpApi:
+          path: /posts/{postId}
+          method: delete
