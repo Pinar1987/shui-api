@@ -1,5 +1,6 @@
 service: shui-api
 frameworkVersion: '4'
+useDotenv: true
 
 provider:
   name: aws
@@ -12,7 +13,8 @@ provider:
     USERS_TABLE: ${self:service}-${sls:stage}-users
     POSTS_TABLE: ${self:service}-${sls:stage}-posts
     COMMENTS_TABLE: ${self:service}-${sls:stage}-comments
-    
+    JWT_SECRET: ${env:JWT_SECRET}
+  
   iam:
     role:
       statements:
@@ -76,4 +78,11 @@ functions:
     events:
       - httpApi:
           path: /auth/register
+          method: post
+
+  login:
+    handler: src/handlers/auth/login.handler
+    events:
+      - httpApi:
+          path: /auth/login
           method: post
