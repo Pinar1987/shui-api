@@ -3,6 +3,7 @@ import httpJsonBodyParser from "@middy/http-json-body-parser";
 import { authSchema } from "../../schemas/authSchema.js";
 import { registerUser } from "../../services/authService.js";
 import { response } from "../../utils/response.js";
+import { errorMiddleware } from "../../middlewares/errorMiddleware.js";
 
 const register = async (event) => {
   const validation = authSchema.safeParse(event.body);
@@ -28,4 +29,6 @@ const register = async (event) => {
   }
 };
 
-export const handler = middy(register).use(httpJsonBodyParser());
+export const handler = middy(register)
+  .use(httpJsonBodyParser())
+  .use(errorMiddleware());

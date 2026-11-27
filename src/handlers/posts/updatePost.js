@@ -6,6 +6,7 @@ import { validationMiddleware } from "../../middlewares/validationMiddleware.js"
 import { postSchema } from "../../schemas/postSchema.js";
 import { editPost } from "../../services/postService.js";
 import { response } from "../../utils/response.js";
+import { errorMiddleware } from "../../middlewares/errorMiddleware.js";
 
 const updatePost = async (event) => {
   try {
@@ -29,4 +30,5 @@ export const handler = middy(updatePost)
   .use(authMiddleware())
   .use(httpJsonBodyParser())
   .use(validationMiddleware(postSchema))
-  .use(ownershipMiddleware());
+  .use(ownershipMiddleware())
+  .use(errorMiddleware());

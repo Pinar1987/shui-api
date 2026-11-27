@@ -5,7 +5,7 @@ import { validationMiddleware } from "../../middlewares/validationMiddleware.js"
 import { commentSchema } from "../../schemas/commentSchema.js";
 import { createNewComment } from "../../services/commentService.js";
 import { response } from "../../utils/response.js";
-
+import { errorMiddleware } from "../../middlewares/errorMiddleware.js";
 const createComment = async (event) => {
   try {
     const comment = await createNewComment(
@@ -31,4 +31,5 @@ const createComment = async (event) => {
 export const handler = middy(createComment)
   .use(authMiddleware())
   .use(httpJsonBodyParser())
-  .use(validationMiddleware(commentSchema));
+  .use(validationMiddleware(commentSchema))
+  .use(errorMiddleware());

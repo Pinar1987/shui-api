@@ -3,7 +3,7 @@ import httpJsonBodyParser from "@middy/http-json-body-parser";
 import { authSchema } from "../../schemas/authSchema.js";
 import { loginUser } from "../../services/authService.js";
 import { response } from "../../utils/response.js";
-
+import { errorMiddleware } from "../../middlewares/errorMiddleware.js";
 const login = async (event) => {
   const validation = authSchema.safeParse(event.body);
 
@@ -30,4 +30,6 @@ const login = async (event) => {
   }
 };
 
-export const handler = middy(login).use(httpJsonBodyParser());
+export const handler = middy(login)
+  .use(httpJsonBodyParser())
+  .use(errorMiddleware());
