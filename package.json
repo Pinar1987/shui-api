@@ -1,0 +1,29 @@
+{
+  "name": "shui-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "serverless": "^4.47.0"
+  },
+  "allowScripts": {
+    "serverless@4.47.0": true,
+    "bcrypt@6.0.0": true
+  },
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.1178.0",
+    "@aws-sdk/lib-dynamodb": "^3.1178.0",
+    "@middy/core": "^7.9.2",
+    "@middy/http-json-body-parser": "^7.9.2",
+    "bcrypt": "^6.0.0",
+    "jsonwebtoken": "^9.0.3",
+    "zod": "^4.6.7"
+  }
+}
