@@ -1,6 +1,6 @@
 import { randomUUID } from "node:crypto";
 import { createPost, getAllPosts, getPostById, updatePost, deletePost } from "../repositories/postRepository.js";
-
+import { deleteCommentsByPostId } from "../repositories/commentRepository.js";
 export const createNewPost = async ({ title, content }, user) => {
   const now = new Date().toISOString();
 
@@ -37,6 +37,8 @@ export const editPost = async (id, data, username) => {
   return updatePost(id, data, username);
 };
 
+
 export const removePost = async (id, username) => {
-  return deletePost(id, username);
+  await deletePost(id, username);
+  await deleteCommentsByPostId(id);
 };

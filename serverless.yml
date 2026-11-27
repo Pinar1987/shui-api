@@ -121,3 +121,17 @@ functions:
       - httpApi:
           path: /posts/{postId}
           method: delete
+
+  createComment:
+    handler: src/handlers/comments/createComment.handler
+    events:
+      - httpApi:
+          path: /posts/{postId}/comments
+          method: post
+
+  getComments:
+    handler: src/handlers/comments/getComments.handler
+    events:
+      - httpApi:
+          path: /posts/{postId}/comments
+          method: get
